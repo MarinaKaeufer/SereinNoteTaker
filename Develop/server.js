@@ -2,11 +2,13 @@
 const express = require('express');
 
 // Require the JSON file and assign it to a variable called `termData`
-const termData = require('./db/db.json');
+const notesData = require('./db/db.json');
 const PORT = 3001;
 
 // Initialize our app variable by setting it to the value of express()
 const app = express();
+
+app.use(express.static('public'));
 
 // Add a static route for index.html
 app.get('/', (req, res) => {
@@ -19,6 +21,11 @@ app.get('/', (req, res) => {
 app.get('/notes', (req, res) => {
     res.sendFile(__dirname + '/public/notes.html');
 })
+
+// Get all notes
+app.get('/api/notes', (req, res) => res.json(notesData));
+
+//
 
 app.listen(PORT, () =>
   console.log(`Notes app listening at http://localhost:${PORT}`)
