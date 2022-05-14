@@ -4,7 +4,9 @@ const express = require('express');
 
 // Import 3rd party libraries
 const fs = require('fs');
+const path = require('path');
 const uuid = require('./helpers/uuid');
+
 
 // Require the JSON file and assign it to a variable called `termData`
 const notesData = require('./db/db.json');
