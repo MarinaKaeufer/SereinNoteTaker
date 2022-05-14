@@ -71,7 +71,7 @@ app.post('/api/notes', (req, res) => {
   
           // Write updated reviews back to the file
           fs.writeFile(
-            './db/db.json',
+            'db/db.json',
             JSON.stringify(parsedNotes, null, 4),
             (writeErr) =>
               writeErr
