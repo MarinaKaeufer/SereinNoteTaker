@@ -19,10 +19,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static('public'));
 
+console.log(` `);
+console.log(` `);
+console.log(` `);
+console.log(`After loading all middleware...`);
+
 // Add a static route for index.html
 app.get('/', (req, res) => {
   // `res.sendFile` is Express' way of sending a file
   // `__dirname` is a variable that always returns the directory that your server is running in
+  console.log(`Get / root...`);
+  console.log(`__dirname ${__dirname}`);
   res.sendFile(__dirname + '/public/index.html');
 });
 
