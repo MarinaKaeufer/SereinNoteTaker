@@ -28,8 +28,6 @@ console.log(`After loading all middleware...`);
 app.get('/', (req, res) => {
   // `res.sendFile` is Express' way of sending a file
   // `__dirname` is a variable that always returns the directory that your server is running in
-  console.log(`Get / root...`);
-  console.log(`__dirname ${__dirname}`);
   res.sendFile(__dirname + '/public/index.html');
 });
 
@@ -69,9 +67,10 @@ app.post('/api/notes', (req, res) => {
           // Add a new review
           parsedNotes.push(newNote);
   
+          const dataFile = path.join(__dirname, "db", "db.json");
           // Write updated reviews back to the file
           fs.writeFile(
-            'db/db.json',
+            dataFile,
             JSON.stringify(parsedNotes, null, 4),
             (writeErr) =>
               writeErr
